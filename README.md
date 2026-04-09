@@ -12,6 +12,8 @@ SVGator is great software. It handles complex SVG timelines, easing curves, inte
 
 We ripped it out and replaced it with CSS.
 
+![Polyclip in action](assets/polyclip-demo.gif)
+
 ## 50 lines of CSS
 
 CSS has `clip-path: polygon()`. You give it coordinates, it clips an element to that shape. Percentages make it responsive. No viewBox math, no JavaScript, no SVG DOM.
