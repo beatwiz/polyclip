@@ -2,7 +2,7 @@
 
 # Your Hero Banner Probably Doesn't Need 200KB of JavaScript
 
-*A client needed animated hero banners. Their agency used 200KB of JavaScript. We used clip-path. Sometimes the boring solution is the right one.*
+*A client needed animated hero banners. Their agency used 200KB of JavaScript. We used clip-path. Sometimes the boring is the one that works.*
 
 ## The bulldozer
 
