@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Polyclip
  * Description: Animated polygon clip-path for images — multi-image support, responsive breakpoints, pure CSS animation.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: jawesome.dev
  * Author URI: https://jawesome.dev
  * Text Domain: polyclip
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define('POLYCLIP_VERSION', '1.0.0');
+define('POLYCLIP_VERSION', '1.0.1');
 define( 'POLYCLIP_DIR', plugin_dir_path( __FILE__ ) );
 define( 'POLYCLIP_URL', plugin_dir_url( __FILE__ ) );
 
