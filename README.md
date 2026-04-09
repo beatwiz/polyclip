@@ -1,6 +1,6 @@
 ![Polyclip Hero](assets/polyclip-hero.jpg)
 
-# We Replaced SVGator With 50 Lines of CSS and Open Sourced It
+# Your Hero Banner Probably Doesn't Need 200KB of JavaScript
 
 *A client needed animated hero banners. Their agency used 200KB of JavaScript. We used clip-path.*
 
