@@ -2,7 +2,7 @@
 
 # Your Hero Banner Probably Doesn't Need 200KB of JavaScript
 
-*A client needed animated hero banners. Their agency used 200KB of JavaScript. We used clip-path.*
+*A client needed animated hero banners. Their agency used 200KB of JavaScript. We used clip-path. Sometimes the boring solution is the right one.*
 
 ## The bulldozer
 
@@ -14,7 +14,7 @@ We ripped it out and replaced it with CSS.
 
 ![Polyclip in action](assets/polyclip-demo.gif)
 
-## 50 lines of CSS
+## The CSS
 
 CSS has `clip-path: polygon()`. You give it coordinates, it clips an element to that shape. Percentages make it responsive. No viewBox math, no JavaScript, no SVG DOM.
 
@@ -29,13 +29,13 @@ And because `clip-path` is animatable, you can morph between polygon states with
 }
 ```
 
-The browser interpolates between them. Smooth morphing. Zero JavaScript. The GPU handles it.
+The browser interpolates between them. Smooth morphing. The GPU handles it.
 
 ## Turning it into a plugin
 
 We packaged this as a WordPress plugin called **Polyclip**. Here's what's under the hood.
 
-**Presets.** Nobody wants to hand-write polygon coordinates. We ship 6 presets: `default`, `angular-left`, `angular-right`, `wide`, `shard`, and `blob`. Each one is an array of polygon states that the CSS keyframes cycle through. The `blob` preset is a 9-point organic shape that looks like a living amoeba.
+**Presets.** Client wanted 6 presets: `default`, `angular-left`, `angular-right`, `wide`, `shard`, and `blob`. Each one is an array of polygon states that the CSS keyframes cycle through. The `blob` preset is a 9-point organic shape that looks like a living amoeba.
 
 **Safe zone.** If your hero has a logo or focal point in the center, the morphing polygon might clip through it. The `safe_zone` parameter (0 to 70) clamps all vertices radially away from the center. The animation amplitude dampens proportionally so nothing oscillates into the protected area.
 
