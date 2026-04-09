@@ -1,0 +1,62 @@
+name: Release Plugin
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine next version
+        id: version
+        run: |
+          latest_tag=$(git tag -l 'v*' --sort=-v:refname | head -n1 | sed 's/^v//')
+          if [ -z "$latest_tag" ]; then
+            echo "version=$(grep -oP 'Version:\s*\K[0-9.]+' polyclip.php)" >> "$GITHUB_OUTPUT"
+          else
+            IFS='.' read -r major minor patch <<< "$latest_tag"
+            echo "version=$major.$minor.$((patch + 1))" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update plugin version
+        run: |
+          sed -i "s/Version:.*/Version: ${{ steps.version.outputs.version }}/" polyclip.php
+          sed -i "s/define('POLYCLIP_VERSION'.*/define('POLYCLIP_VERSION', '${{ steps.version.outputs.version }}');/" polyclip.php
+
+      - name: Create plugin zip
+        run: |
+          zip -r polyclip-v${{ steps.version.outputs.version }}.zip \
+            polyclip.php \
+            includes/ \
+            elements/ \
+            assets/css/ \
+            assets/js/ \
+            LICENSE \
+            README.md
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add polyclip.php
+          git diff --staged --quiet || {
+            git commit -m "v${{ steps.version.outputs.version }} [skip ci]"
+            git push
+          }
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.version.outputs.version }}" \
+            polyclip-v${{ steps.version.outputs.version }}.zip \
+            --title "Polyclip v${{ steps.version.outputs.version }}" \
+            --generate-notes

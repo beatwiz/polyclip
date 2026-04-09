@@ -5,3 +5,5 @@ Thumbs.db
 .vscode/
 *.sublime-*
 node_modules/
+opensem/
+.serena/
