@@ -3,6 +3,12 @@ name: Release Plugin
 on:
   push:
     branches: [main]
+    paths:
+      - 'polyclip.php'
+      - 'includes/**'
+      - 'elements/**'
+      - 'assets/css/**'
+      - 'assets/js/**'
 
 jobs:
   release:
