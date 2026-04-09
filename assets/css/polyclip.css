@@ -1,0 +1,53 @@
+/**
+ * Polyclip - Front-end Styles
+ */
+
+.polyclip {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Padding-bottom fallback for browsers without aspect-ratio support. */
+.polyclip__fallback {
+    display: none;
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+    .polyclip {
+        aspect-ratio: unset !important;
+    }
+    .polyclip__fallback {
+        display: block;
+    }
+}
+
+/* Clip container */
+.polyclip__clip {
+    position: absolute;
+    inset: 0;
+    will-change: clip-path;
+}
+
+/* Animation */
+.polyclip__clip--animated {
+    animation-duration: var(--polyclip-duration, 8s);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    /* animation-name is set per-instance via inline <style> */
+}
+
+/* Pause animation when not visible (JS toggles this class) */
+.polyclip__clip--paused {
+    animation-play-state: paused;
+}
+
+/* Image */
+.polyclip__clip img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

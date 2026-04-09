@@ -1,0 +1,142 @@
+/**
+ * Polyclip - Admin Styles
+ */
+
+.polyclip-admin .polyclip-section {
+    margin-bottom: 20px;
+}
+
+.polyclip-admin #poststuff .postbox {
+    margin-bottom: 20px;
+}
+
+/* Image groups */
+.polyclip-image-group {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.polyclip-image-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.polyclip-image-group h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Image list */
+.polyclip-image-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 40px;
+}
+
+.polyclip-image-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: move;
+    transition: border-color 0.2s;
+}
+
+.polyclip-image-item:hover {
+    border-color: #2271b1;
+}
+
+.polyclip-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.polyclip-remove-image {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.polyclip-image-item:hover .polyclip-remove-image {
+    opacity: 1;
+}
+
+.polyclip-remove-image:hover {
+    background: rgba(200, 0, 0, 0.8);
+}
+
+.polyclip-image-placeholder {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #2271b1;
+    border-radius: 4px;
+    background: #f0f6fc;
+}
+
+/* Aspect ratio inputs */
+.polyclip-aspect-input {
+    width: 90px !important;
+}
+
+/* Preview tabs */
+.polyclip-preview-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.polyclip-preview-tabs .polyclip-preview-tab.active {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+}
+
+/* Shortcode preview */
+.polyclip-shortcode-preview {
+    background: #f6f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+}
+
+.polyclip-shortcode-preview code {
+    font-size: 13px;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+/* Form table adjustments */
+.polyclip-admin .form-table th {
+    width: 150px;
+    padding-top: 15px;
+}
+
+.polyclip-admin .form-table td {
+    padding-top: 10px;
+}
